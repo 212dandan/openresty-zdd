@@ -9,6 +9,6 @@ make or gmake <br>
 make install or gmake install <br>
 <br>
 ## test
-[root@bogon sbin]# pwd <br>
+[root@zdd sbin]# pwd <br>
 /usr/local/openresty/nginx/sbin <br>
-[root@bogon sbin]# ./nginx  <br>
+[root@zdd sbin]# ./nginx  <br>
