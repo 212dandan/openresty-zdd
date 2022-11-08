@@ -1,0 +1,8 @@
+%dir /usr/lib/debug
+%dir /usr/lib/debug/usr
+%dir /usr/lib/debug/usr/lib64
+%dir /usr/lib/debug/usr/bin
+%dir /usr/lib/debug/.dwz
+/usr/lib/debug/usr/lib64/libluajit-5.1.so.2.1.0-2.1.0-beta3.6.lns8.loongarch64.debug
+/usr/lib/debug/usr/bin/luajit-2.1.0-beta3-2.1.0-beta3.6.lns8.loongarch64.debug
+/usr/lib/debug/.dwz/luajit-2.1.0-beta3.6.lns8.loongarch64

@@ -1,0 +1,210 @@
+--------------------
+./configure
+2022年 11月 08日 星期二 16:12:05 CST
+=== ztest613596.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+cc -c ztest613596.c
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest613596.c ===
+int foo() { return 0; }
+===
+cc -c -g -pipe ztest613596.c
+
+Checking for shared library support...
+=== ztest613596.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+cc -w -c -g -pipe -fPIC ztest613596.c
+cc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -g -pipe -fPIC -o ztest613596.so ztest613596.o
+Building shared library libz.so.1.2.11 with cc.
+
+=== ztest613596.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+cc -c -g -pipe ztest613596.c
+Checking for size_t... Yes.
+
+
+=== ztest613596.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+cc -c -g -pipe -D_LARGEFILE64_SOURCE=1 ztest613596.c
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest613596.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+cc -g -pipe -D_LARGEFILE64_SOURCE=1 -o ztest613596 ztest613596.c
+Checking for strerror... Yes.
+
+=== ztest613596.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+cc -c -g -pipe -D_LARGEFILE64_SOURCE=1 ztest613596.c
+Checking for unistd.h... Yes.
+
+=== ztest613596.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+cc -c -g -pipe -D_LARGEFILE64_SOURCE=1 ztest613596.c
+Checking for stdarg.h... Yes.
+
+=== ztest613596.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+cc -c -g -pipe -D_LARGEFILE64_SOURCE=1 ztest613596.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest613596.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+cc -g -pipe -D_LARGEFILE64_SOURCE=1 -o ztest613596 ztest613596.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest613596.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+cc -c -g -pipe -D_LARGEFILE64_SOURCE=1 ztest613596.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest613596.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+cc -c -g -pipe -D_LARGEFILE64_SOURCE=1 ztest613596.c
+Checking for attribute(visibility) support... Yes.
+=== ztest613596.c ===
+#include <sys/sdt.h>
+int main() { return 0; }
+===
+cc -c -g -pipe -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN ztest613596.c
+Checking for sys/sdt.h ... Yes.
+
+=== ztest613596.c ===
+#if _ARCH_PWR8==1
+#if __BYTE_ORDER == __BIG_ENDIAN && defined(__clang__)
+#error "Clang vector instructions aren't big endian compatible"
+#endif
+#if defined(__BUILTIN_CPU_SUPPORTS__)
+/* good and easy */
+#else
+#include <sys/auxv.h>
+#include <bits/hwcap.h>
+int main()
+{
+  return (getauxval(AT_HWCAP2) & PPC_FEATURE2_ARCH_2_07);
+}
+#endif
+#else
+#error No Power 8 or newer architecture, may need -mcpu=power8
+#endif
+===
+cc -c -g -pipe -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DHAVE_SYS_SDT_H ztest613596.c
+ztest613596.c:16:2: error: #error No Power 8 or newer architecture, may need -mcpu=power8
+ #error No Power 8 or newer architecture, may need -mcpu=power8
+  ^~~~~Checking for runtime cpu detection and Power 8 (or newer) Architecture support... No.
+
+=== ztest613596.c ===
+static unsigned int crc32_real_optimized(unsigned int crc, unsigned char *p,
+                          unsigned long len)
+{
+        return 1;
+}
+static unsigned int (*(crc32_ifunc(void)))(unsigned int, unsigned char *,unsigned long)
+{
+  return crc32_real_optimized;
+}
+unsigned int crc32(unsigned int, unsigned char *,unsigned long)
+                    __attribute__ ((ifunc ("crc32_ifunc")));
+===
+cc -c -g -pipe -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DHAVE_SYS_SDT_H ztest613596.c
+Checking for attribute(ifunc) support... Yes.
+
+ALL = static shared all64
+AR = ar
+ARFLAGS = rc
+CC = cc
+CFLAGS = -g -pipe -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DHAVE_SYS_SDT_H
+CPP = cc -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = cc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ranlib
+SFLAGS = -g -pipe -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -DHAVE_SYS_SDT_H -DZ_IFUNC_NATIVE
+SHAREDLIB = libz.so
+SHAREDLIBM = libz.so.1
+SHAREDLIBV = libz.so.1.2.11
+STATICLIB = libz.a
+TEST = all teststatic testshared test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /usr/local
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+

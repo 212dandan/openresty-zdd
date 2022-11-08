@@ -1,0 +1,4 @@
+%dir /usr/lib/debug
+%dir /usr/lib/debug/usr
+%dir /usr/lib/debug/usr/lib64
+/usr/lib/debug/usr/lib64/libz.so.1.2.11-1.2.11-17.lns8.loongarch64.debug

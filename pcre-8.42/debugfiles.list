@@ -1,0 +1,13 @@
+%dir /usr/lib/debug
+%dir /usr/lib/debug/usr
+%dir /usr/lib/debug/usr/bin
+%dir /usr/lib/debug/usr/lib64
+%dir /usr/lib/debug/.dwz
+/usr/lib/debug/usr/bin/pcregrep-8.42-4.0.1.lns8.loongarch64.debug
+/usr/lib/debug/usr/bin/pcretest-8.42-4.0.1.lns8.loongarch64.debug
+/usr/lib/debug/usr/lib64/libpcre16.so.0.2.10-8.42-4.0.1.lns8.loongarch64.debug
+/usr/lib/debug/usr/lib64/libpcre.so.1.2.10-8.42-4.0.1.lns8.loongarch64.debug
+/usr/lib/debug/usr/lib64/libpcreposix.so.0.0.6-8.42-4.0.1.lns8.loongarch64.debug
+/usr/lib/debug/usr/lib64/libpcre32.so.0.0.10-8.42-4.0.1.lns8.loongarch64.debug
+/usr/lib/debug/usr/lib64/libpcrecpp.so.0.0.1-8.42-4.0.1.lns8.loongarch64.debug
+/usr/lib/debug/.dwz/pcre-8.42-4.0.1.lns8.loongarch64
