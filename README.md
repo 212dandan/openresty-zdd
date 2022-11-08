@@ -11,4 +11,5 @@ make install or gmake install <br>
 ## test
 [root@zdd sbin]# pwd <br>
 /usr/local/openresty/nginx/sbin <br>
-[root@zdd sbin]# ./nginx  <br>
+[root@zdd sbin]# ./nginx -version
+nginx version: openresty/1.19.9.1
